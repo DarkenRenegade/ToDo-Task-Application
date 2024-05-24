@@ -8,7 +8,7 @@ function processTask() {
     console.log("processTask was called");
     let userTask = getTask();
     if (userTask != null) {
-        addTask(userTask);
+        addTaskToWebpage(userTask);
     }
 }
 function getTask() {
@@ -34,13 +34,21 @@ function isValidTaskName(data) {
         return true;
     }
 }
-function addTask(t) {
+function addTaskToWebpage(t) {
     console.log(t);
     let taskDiv = document.createElement("div");
     let taskHeading = document.createElement("h2");
     taskHeading.textContent = `${t.taskName}`;
     taskDiv.appendChild(taskHeading);
     document.querySelector("#task-display").appendChild(taskDiv);
+}
+function addTaskToStorage(t) {
+    const TaskStorageKey = "Tasks";
+    let taskData = localStorage.getItem(TaskStorageKey);
+    let tasks = taskData ? JSON.parse(taskData) : [];
+    tasks.push(t);
+    taskData = JSON.stringify(tasks);
+    localStorage.setItem(TaskStorageKey, taskData);
 }
 function clearAllErrorMessages() {
     let allSpans = document.querySelectorAll("form span.error-msg");
