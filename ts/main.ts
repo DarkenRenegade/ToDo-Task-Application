@@ -24,7 +24,7 @@ function processTask() {
 
     let userTask = getTask();
     if (userTask != null) {
-        addTask(userTask);
+        addTaskToWebpage(userTask);
     }
 }
 
@@ -80,7 +80,7 @@ function isValidTaskName(data:string) {
  * all data is valid.
  * @param t The Task containing valid data will be added
  */
-function addTask(t:Task):void {
+function addTaskToWebpage(t:Task):void {
     console.log(t);
 
     // Add task to the web page
@@ -93,6 +93,16 @@ function addTask(t:Task):void {
 
     // Add taskDiv to web page
     document.querySelector("#task-display").appendChild(taskDiv);
+}
+
+function addTaskToStorage(t:Task) {
+    const TaskStorageKey = "Tasks";
+    let taskData = localStorage.getItem(TaskStorageKey);
+
+    if (taskData == null) {
+        let tasks:Task[] = [];
+        tasks.push(t);
+    }
 }
 
 /**
