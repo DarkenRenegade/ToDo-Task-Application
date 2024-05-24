@@ -45,8 +45,10 @@ function processTask() {
  * will be shown on the web page.
  */
 function getTask():Task {
+    clearAllErrorMessages();
+
     // Get the input
-    let taskNameTextBox = document.querySelector("#taskname") as HTMLInputElement;
+    let taskNameTextBox = document.querySelector("#taskName") as HTMLInputElement;
 
     // Validate data
     let isValidData:boolean = true;
@@ -55,7 +57,7 @@ function getTask():Task {
     let taskName:string = taskNameTextBox.value;
     if (!isValidTaskName(taskName)) {
         isValidData = false;
-        taskNameTextBox.nextElementSibling.textContent = "The name must be 1000 characters or less."
+        taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
     }
 }
 
@@ -67,7 +69,7 @@ function getTask():Task {
  * @returns True if data is a valid task pattern
  */
 function isValidTaskName(data:string) {
-    if (data.length > 1000) {
+    if (data.length > 100) {
         return false;
     } else {
         return true;
@@ -80,3 +82,18 @@ function isValidTaskName(data:string) {
  * @param t The Task containing valid data will be added
  */
 function addTask(t:Task):void {}
+
+/**
+ * Clears all of the validation error message
+ * spans in the form.
+ */
+function clearAllErrorMessages() {
+    // Get all error spans
+    let allSpans = document.querySelectorAll("form span.error-msg");
+
+    // Loop through, and turn each span into an empty string
+    for (let i = 0; i < allSpans.length; i++) {
+        let currentSpan = allSpans[i];
+        currentSpan.textContent = "";
+    }
+}

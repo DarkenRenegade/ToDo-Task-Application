@@ -16,16 +16,17 @@ function processTask() {
     }
 }
 function getTask() {
-    let taskNameTextBox = document.querySelector("#taskname");
+    clearAllErrorMessages();
+    let taskNameTextBox = document.querySelector("#taskName");
     let isValidData = true;
     let taskName = taskNameTextBox.value;
     if (!isValidTaskName(taskName)) {
         isValidData = false;
-        taskNameTextBox.nextElementSibling.textContent = "The name must be 1000 characters or less.";
+        taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
     }
 }
 function isValidTaskName(data) {
-    if (data.length > 1000) {
+    if (data.length > 100) {
         return false;
     }
     else {
@@ -33,3 +34,10 @@ function isValidTaskName(data) {
     }
 }
 function addTask(t) { }
+function clearAllErrorMessages() {
+    let allSpans = document.querySelectorAll("form span.error-msg");
+    for (let i = 0; i < allSpans.length; i++) {
+        let currentSpan = allSpans[i];
+        currentSpan.textContent = "";
+    }
+}
