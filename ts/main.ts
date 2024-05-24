@@ -59,6 +59,13 @@ function getTask():Task {
         isValidData = false;
         taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
     }
+
+    if (isValidData) {
+        // Create and monitor the tasks created and checks if all data is valid
+        let addedTask = new Task();
+        addedTask.taskName = taskName;
+    }
+    return null;
 }
 
 /**
@@ -81,7 +88,10 @@ function isValidTaskName(data:string) {
  * all data is valid.
  * @param t The Task containing valid data will be added
  */
-function addTask(t:Task):void {}
+function addTask(t:Task):void {
+    alert("Data was valid, task added");
+    console.log(t);
+}
 
 /**
  * Clears all of the validation error message

@@ -24,6 +24,11 @@ function getTask() {
         isValidData = false;
         taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
     }
+    if (isValidData) {
+        let addedTask = new Task();
+        addedTask.taskName = taskName;
+    }
+    return null;
 }
 function isValidTaskName(data) {
     if (data.length > 100) {
@@ -33,7 +38,10 @@ function isValidTaskName(data) {
         return true;
     }
 }
-function addTask(t) { }
+function addTask(t) {
+    alert("Data was valid, task added");
+    console.log(t);
+}
 function clearAllErrorMessages() {
     let allSpans = document.querySelectorAll("form span.error-msg");
     for (let i = 0; i < allSpans.length; i++) {
