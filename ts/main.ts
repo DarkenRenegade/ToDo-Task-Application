@@ -99,10 +99,10 @@ function addTaskToStorage(t:Task) {
     const TaskStorageKey = "Tasks";
     let taskData = localStorage.getItem(TaskStorageKey);
 
-    if (taskData == null) {
-        let tasks:Task[] = [];
-        tasks.push(t);
-    }
+    let tasks = taskData ? JSON.parse(taskData) : [];
+    tasks.push(t);
+    taskData = JSON.stringify(tasks);
+    localStorage.setItem(TaskStorageKey, taskData);
 }
 
 /**
