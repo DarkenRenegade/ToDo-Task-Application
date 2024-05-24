@@ -35,8 +35,12 @@ function isValidTaskName(data) {
     }
 }
 function addTask(t) {
-    alert("Data was valid, task added");
     console.log(t);
+    let taskDiv = document.createElement("div");
+    let taskHeading = document.createElement("h2");
+    taskHeading.textContent = `${t.taskName}`;
+    taskDiv.appendChild(taskHeading);
+    document.querySelector("#task-display").appendChild(taskDiv);
 }
 function clearAllErrorMessages() {
     let allSpans = document.querySelectorAll("form span.error-msg");

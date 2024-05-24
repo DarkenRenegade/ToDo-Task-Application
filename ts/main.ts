@@ -76,13 +76,23 @@ function isValidTaskName(data:string) {
 }
 
 /**
- * Adds a Task objext to web storage. Assumes
+ * Adds a Task object to the web page and web storage. Assumes
  * all data is valid.
  * @param t The Task containing valid data will be added
  */
 function addTask(t:Task):void {
-    alert("Data was valid, task added");
     console.log(t);
+
+    // Add task to the web page
+    let taskDiv:HTMLDivElement = document.createElement("div");
+
+    let taskHeading = document.createElement("h2");
+    taskHeading.textContent = `${t.taskName}`;
+    // Add h2 to task div
+    taskDiv.appendChild(taskHeading);
+
+    // Add taskDiv to web page
+    document.querySelector("#task-display").appendChild(taskDiv);
 }
 
 /**
