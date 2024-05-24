@@ -13,14 +13,6 @@ class Task {
     isComplete : boolean;
 }
 
-// Task object test code
-let myTask = new Task();
-myTask.taskName = "Shop for groceries";
-myTask.isComplete = true;
-
-console.log(myTask);
-
-
 window.onload = function() {
     // Set up button click for add task form
     let addTaskBtn:HTMLButtonElement = document.querySelector("#add-task") as HTMLButtonElement;

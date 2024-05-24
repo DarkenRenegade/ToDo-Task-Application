@@ -1,9 +1,5 @@
 class Task {
 }
-let myTask = new Task();
-myTask.taskName = "Shop for groceries";
-myTask.isComplete = true;
-console.log(myTask);
 window.onload = function () {
     let addTaskBtn = document.querySelector("#add-task");
     addTaskBtn.onclick = processTask;
