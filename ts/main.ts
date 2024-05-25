@@ -10,7 +10,7 @@ class Task {
     /**
      * Checks if the task is complete
      */
-    isComplete : boolean;
+    // isComplete : boolean;
 }
 
 window.onload = function() {
@@ -24,6 +24,7 @@ function processTask() {
     let userTask = getTask();
     if (userTask != null) {
         addTaskToWebpage(userTask);
+        addTaskToStorage(userTask);
     }
 }
 
@@ -55,6 +56,7 @@ function getTask():Task {
         // Create and monitor the tasks created and checks if all data is valid
         let addedTask = new Task();
         addedTask.taskName = taskName;
+        return addedTask;
     }
     return null;
 }
