@@ -7,6 +7,8 @@ window.onload = function () {
 function processTask() {
     let userTask = getTask();
     if (userTask != null) {
+        const taskCompleteCheckbox = document.querySelector("#taskComplete");
+        userTask.isComplete = taskCompleteCheckbox.checked;
         addTaskToWebpage(userTask);
         addTaskToStorage(userTask);
     }
@@ -19,6 +21,11 @@ function getTask() {
     if (!isValidTaskName(taskName)) {
         isValidData = false;
         taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
+    }
+    if (taskName.trim() == "") {
+        isValidData = false;
+        let taskErrorSpan = taskNameTextBox.nextElementSibling;
+        taskErrorSpan.textContent = "You must provide a name for your task";
     }
     if (isValidData) {
         let addedTask = new Task();
@@ -37,9 +44,11 @@ function isValidTaskName(data) {
 }
 function addTaskToWebpage(t) {
     let taskDiv = document.createElement("div");
-    let taskHeading = document.createElement("h2");
-    taskHeading.textContent = `${t.taskName}`;
-    taskDiv.appendChild(taskHeading);
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+    taskCheckbox.id = "taskCheckbox";
+    taskCheckbox.textContent = `${t.taskName}`;
+    taskDiv.appendChild(taskCheckbox);
     document.querySelector("#task-display").appendChild(taskDiv);
 }
 function addTaskToStorage(t) {
