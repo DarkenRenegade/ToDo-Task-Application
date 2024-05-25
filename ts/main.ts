@@ -23,11 +23,11 @@ function processTask() {
 
     let userTask = getTask();
     if (userTask != null) {
-        const taskCompleteCheckbox = document.querySelector("#taskComplete") as HTMLInputElement;
-        userTask.isComplete = taskCompleteCheckbox.checked;
-
         addTaskToWebpage(userTask);
         addTaskToStorage(userTask);
+        // Clear the task name textbox
+        let taskNameTextBox = document.querySelector("#taskName") as HTMLInputElement;
+        taskNameTextBox.value = "";
     }
 }
 
@@ -53,11 +53,6 @@ function getTask():Task {
     if (!isValidTaskName(taskName)) {
         isValidData = false;
         taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
-    }
-    if (taskName.trim() == "") {
-        isValidData = false;
-        let taskErrorSpan = taskNameTextBox.nextElementSibling;
-        taskErrorSpan.textContent = "You must provide a name for your task"
     }
 
     if (isValidData) {
@@ -94,10 +89,16 @@ function addTaskToWebpage(t:Task):void {
     // Add task to the web page
     let taskDiv:HTMLDivElement = document.createElement("div");
 
-    let taskHeading = document.createElement("h2");
-    taskHeading.textContent = `${t.taskName}`;
-    // Add h2 to task div
-    taskDiv.appendChild(taskHeading);
+    let taskCheckbox = document.createElement("input");
+    taskCheckbox.type = "checkbox";
+    taskCheckbox.id = "taskCheckbox";
+    // Creating a textbox for each task
+    const taskCbLabel = document.createElement("label");
+    taskCbLabel.textContent = `${t.taskName}`;
+    taskCbLabel.htmlFor = "taskCheckbox";
+    // Append label and checkbox to webpage
+    taskDiv.appendChild(taskCbLabel);
+    taskDiv.appendChild(taskCheckbox);
 
     // Add taskDiv to web page
     document.querySelector("#task-display").appendChild(taskDiv);
