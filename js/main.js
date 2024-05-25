@@ -44,11 +44,9 @@ function isValidTaskName(data) {
 }
 function addTaskToWebpage(t) {
     let taskDiv = document.createElement("div");
-    let taskCheckbox = document.createElement("input");
-    taskCheckbox.type = "checkbox";
-    taskCheckbox.id = "taskCheckbox";
-    taskCheckbox.textContent = `${t.taskName}`;
-    taskDiv.appendChild(taskCheckbox);
+    let taskHeading = document.createElement("h2");
+    taskHeading.textContent = `${t.taskName}`;
+    taskDiv.appendChild(taskHeading);
     document.querySelector("#task-display").appendChild(taskDiv);
 }
 function addTaskToStorage(t) {

@@ -94,12 +94,10 @@ function addTaskToWebpage(t:Task):void {
     // Add task to the web page
     let taskDiv:HTMLDivElement = document.createElement("div");
 
-    let taskCheckbox = document.createElement("input");
-    taskCheckbox.type = "checkbox";
-    taskCheckbox.id = "taskCheckbox";
-    taskCheckbox.textContent = `${t.taskName}`;
+    let taskHeading = document.createElement("h2");
+    taskHeading.textContent = `${t.taskName}`;
     // Add h2 to task div
-    taskDiv.appendChild(taskCheckbox);
+    taskDiv.appendChild(taskHeading);
 
     // Add taskDiv to web page
     document.querySelector("#task-display").appendChild(taskDiv);
