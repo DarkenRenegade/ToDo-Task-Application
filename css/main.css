@@ -82,9 +82,9 @@ input {
 }
 
 /* Style the checkbox */
-input[type="checkbox"] {
-    margin-right: 10px;
-  }
+.taskCheckbox {
+  margin-right: 10px;
+}
 
 .addBtn:hover {
   background-color: #bbb;
