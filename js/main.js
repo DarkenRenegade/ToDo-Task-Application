@@ -8,6 +8,7 @@ function processTask() {
     let userTask = getTask();
     if (userTask != null) {
         addTaskToWebpage(userTask);
+        addTaskToStorage(userTask);
     }
 }
 function getTask() {
@@ -22,6 +23,7 @@ function getTask() {
     if (isValidData) {
         let addedTask = new Task();
         addedTask.taskName = taskName;
+        return addedTask;
     }
     return null;
 }
@@ -46,7 +48,6 @@ function addTaskToStorage(t) {
     let tasks = taskData ? JSON.parse(taskData) : [];
     tasks.push(t);
     taskData = JSON.stringify(tasks);
-    localStorage.setItem(TaskStorageKey, taskData);
 }
 function clearAllErrorMessages() {
     let allSpans = document.querySelectorAll("form span.error-msg");
