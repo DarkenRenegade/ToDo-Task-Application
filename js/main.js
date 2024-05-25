@@ -5,7 +5,6 @@ window.onload = function () {
     addTaskBtn.onclick = processTask;
 };
 function processTask() {
-    console.log("processTask was called");
     let userTask = getTask();
     if (userTask != null) {
         addTaskToWebpage(userTask);
@@ -35,7 +34,6 @@ function isValidTaskName(data) {
     }
 }
 function addTaskToWebpage(t) {
-    console.log(t);
     let taskDiv = document.createElement("div");
     let taskHeading = document.createElement("h2");
     taskHeading.textContent = `${t.taskName}`;

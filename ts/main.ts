@@ -20,7 +20,6 @@ window.onload = function() {
 }
 
 function processTask() {
-    console.log("processTask was called");
 
     let userTask = getTask();
     if (userTask != null) {
@@ -81,7 +80,6 @@ function isValidTaskName(data:string) {
  * @param t The Task containing valid data will be added
  */
 function addTaskToWebpage(t:Task):void {
-    console.log(t);
 
     // Add task to the web page
     let taskDiv:HTMLDivElement = document.createElement("div");
