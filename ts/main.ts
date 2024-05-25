@@ -60,10 +60,12 @@ function getTask():Task {
         let taskErrorSpan = taskNameTextBox.nextElementSibling;
         taskErrorSpan.textContent = "Please enter a name for your task."
     }
+
     if (isValidData) {
         // Create and monitor the tasks created and checks if all data is valid
         let addedTask = new Task();
         addedTask.taskName = taskName;
+        addedTask.isComplete = false;
         return addedTask;
     }
     return null;
@@ -101,6 +103,17 @@ function addTaskToWebpage(t:Task):void {
     const taskCbLabel = document.createElement("label");
     taskCbLabel.textContent = `${t.taskName}`;
     taskCbLabel.htmlFor = "taskCheckbox";
+    // Add event listener to the checkbox
+    taskCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            // If the checkbox is checked, the task name will be crossed out
+            taskCbLabel.style.textDecoration = "line-through";
+        } else {
+            // If the checkbox is unchecked, the line-through will be removed.
+            taskCbLabel.style.textDecoration = "none";
+        }
+    });
+
     // Append label and checkbox to webpage
     taskDiv.appendChild(taskCbLabel);
     taskDiv.appendChild(taskCheckbox);

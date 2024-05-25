@@ -30,6 +30,7 @@ function getTask() {
     if (isValidData) {
         let addedTask = new Task();
         addedTask.taskName = taskName;
+        addedTask.isComplete = false;
         return addedTask;
     }
     return null;
@@ -50,6 +51,14 @@ function addTaskToWebpage(t) {
     const taskCbLabel = document.createElement("label");
     taskCbLabel.textContent = `${t.taskName}`;
     taskCbLabel.htmlFor = "taskCheckbox";
+    taskCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            taskCbLabel.style.textDecoration = "line-through";
+        }
+        else {
+            taskCbLabel.style.textDecoration = "none";
+        }
+    });
     taskDiv.appendChild(taskCbLabel);
     taskDiv.appendChild(taskCheckbox);
     document.querySelector("#task-display").appendChild(taskDiv);
