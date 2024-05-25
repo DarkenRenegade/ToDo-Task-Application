@@ -55,6 +55,11 @@ function getTask():Task {
         taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
     }
 
+    if (taskName.trim() == "") {
+        isValidData = false;
+        let taskErrorSpan = taskNameTextBox.nextElementSibling;
+        taskErrorSpan.textContent = "Please enter a name for your task."
+    }
     if (isValidData) {
         // Create and monitor the tasks created and checks if all data is valid
         let addedTask = new Task();

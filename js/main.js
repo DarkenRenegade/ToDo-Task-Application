@@ -22,6 +22,11 @@ function getTask() {
         isValidData = false;
         taskNameTextBox.nextElementSibling.textContent = "The name must be 100 characters or less.";
     }
+    if (taskName.trim() == "") {
+        isValidData = false;
+        let taskErrorSpan = taskNameTextBox.nextElementSibling;
+        taskErrorSpan.textContent = "Please enter a name for your task.";
+    }
     if (isValidData) {
         let addedTask = new Task();
         addedTask.taskName = taskName;
