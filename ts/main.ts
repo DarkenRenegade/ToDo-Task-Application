@@ -102,6 +102,7 @@ function addTaskToStorage(t:Task) {
     let tasks = taskData ? JSON.parse(taskData) : [];
     tasks.push(t);
     taskData = JSON.stringify(tasks);
+    localStorage.setItem(TaskStorageKey, taskData);
 }
 
 /**

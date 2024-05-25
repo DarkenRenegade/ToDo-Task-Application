@@ -48,6 +48,7 @@ function addTaskToStorage(t) {
     let tasks = taskData ? JSON.parse(taskData) : [];
     tasks.push(t);
     taskData = JSON.stringify(tasks);
+    localStorage.setItem(TaskStorageKey, taskData);
 }
 function clearAllErrorMessages() {
     let allSpans = document.querySelectorAll("form span.error-msg");
